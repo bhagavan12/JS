@@ -1,0 +1,49 @@
+Array Methods:
+
+arr.indexOf(value) or (val,indx)//returns 1st matched element index
+arr.findIndex(testingfunction) //returns 1st satisfied element index
+arr.find(testingfunction)//returns 1st element which satisfied the testing function
+arr.includes(value)
+
+//Array.prototype.indexOf(by value),by testing function(find(),findIndex()),includes(by value)
+
+//Arrays -CRUD (push,pop,unshift,shift,splice)
+
+arr.push(value)//at back
+arr.pop() //delete from back
+arr.unshift(value) //add at front
+arr.shift()//delete from front
+arr.splice(indexval,noof elements delete from that index)
+arr.splice(indexval,noof elements delete from that index,value which is need to add at that indexval)
+
+//Map,filter
+const maparr=arr.map((ele,index,array)=>{
+    retrun (.......)
+}). chaining can possible
+const filarr=arr.filter((ele,index,array)={
+    retrun condition; //retruns 1st satisfied element
+}) 
+
+const forarr=arr.forEach((ele,indx,array)=>{
+    return '';
+}). no chaining can be possible
+
+
+const redarr=arr.reduce((acc,ele,index,arr)=>{
+    return acc=acc+ele; // some thing operation
+}) 
+
+
+//////////////////String///////////////////
+
+str.indexOf(val,index) or (val)
+str.search(val,index)  or (val)
+
+str.slice(start,end);//[st,end) if end is -ve then from st to length-2
+
+str.substring(start,end);//[st,end) no -ve
+
+str.substr(start,len);//len-length of substr from that start index
+
+str.replace(org,new);
+str.charCodeAt(char) //ascii value returnned

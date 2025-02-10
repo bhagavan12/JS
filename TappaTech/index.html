@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <button onclick="alert('1')">1-type Inline event</button>
+    <button onclick="func2()">2-type func event</button>
+    <button id="typethree">3-type ID .onclick event</button>
+    <button id="typefour">4-type query addEventListener event</button>
+    <select name="" id="select" onchange="selectElement()">
+        <option value="">selecctone</option>
+        <option value="asd">asd</option>
+        <option value="fagh">fagh</option>
+        <option value="qwerty">qwerty</option>
+    </select>
+    <input id="inputid" />
+    <p id="pid"></p>
+    <script>
+        const func2 = () => {
+            alert("2");
+        }
+
+        const id3 = document.getElementById('typethree');
+        id3.onclick = function () {
+            alert("3");
+            console.log("3");
+        }
+        const fourthway = document.querySelector('#typefour');
+        fourthway.addEventListener('click', () => {
+            alert("4");
+            console.log(event); //to invoke this fuction PointerEvent is done by user. so details of pointer event ,value,type of event etc..
+            console.log(event.target.value)
+            // console.log("4");
+        })
+        const selectElement = () => {
+            const inputv = document.getElementById('inputid').value;
+            const selectEle = document.getElementById('select').value;
+            const answer = document.getElementById('pid').innerHTML = `input=${inputv} and selected value=${selectEle}`;
+            //wecan do using docu....getEle....addEventListener('change',()=>{})
+            //Conclusion
+            // This is because addEventListener does not overwrite existing event handlers,
+            // whereas onclick overrides any existing "click = fn event handlers.
+            // The other significant difference, of course, is that onclick will always work,
+            // whereas addEventListener does not work in Internet Explorer before version 9.
+        }
+    </script>
+</body>
+
+</html>

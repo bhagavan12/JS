@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubbling and Capturing Example</title>
+    <style>
+        #pchild {
+            border: 2px solid blue;
+            padding: 10px;
+        }
+
+        #child {
+            border: 2px solid red;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="parent">
+        qwe
+        <button id="pchild" style="height:3em;width: 8em;">
+            qwerty
+            <button id="child">Click me!</button>
+        </button>
+    </div>
+
+    <script>
+
+        document.getElementById("child").addEventListener("click", function () {
+            alert("The child element was clicked!");
+        });
+        document.getElementById("parent").addEventListener("click", function () {
+            alert("The parent element was clicked!");
+        }, true);//When you set the third parameter of addEventListener() to true,
+        // you are specifying that the event should be captured during the capturing phase rather than during the bubbling phase.
+        document.getElementById("pchild").addEventListener("click", function () {
+            alert("The pchild element was clicked!");
+        });
+    </script>
+
+</body>
+
+</html>

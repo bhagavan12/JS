@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="promisemultihandlers.js"></script> -->
+</head>
+
+<body>
+    
+    <script>
+        new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve('resolve from p1')
+            },3000)
+        }).then((val)=>{ //return val from above promise is move to .then
+            console.log('val p1 '+val);
+            let p2=new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+                    resolve("resolve from p2 chained")
+                },5000)
+            }).catch((val)=>{
+                console.log("we are done p2 1"+val)
+            })
+            console.log(p2)
+            return p2
+        }).catch((val)=>{//here 1st .then return p2 val that val will return to 2nd .then
+            console.log("we are done p2 2"+val)// here i used .then ,so .then with p2 above will not use instead we can use catch  
+        })//at a time we cannot use 2 .then's for one promise object
+        
+    </script>
+</body>
+
+</html>

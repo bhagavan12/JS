@@ -1,0 +1,49 @@
+<!--XMLHTTPRequest -IT is an object, used to http requests to server ,
+retrive the data from URL without refreshing the entire page-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="pid"></div>
+    <script>
+        const container = document.querySelector('#pid');
+        const request = new XMLHttpRequest();
+        request.open('GET', "https://restcountries.com/v3.1/name/india"); // Opens a GET request to the specified URL endpoint (REST API for retrieving country data).
+        request.send(); //Sends the HTTP request to the server.
+
+        //To get the response 
+        request.addEventListener('load', function () { //Listens for the 'load' event, which occurs when the HTTP request is complete and the response is received.
+            // console.log(this.responseText);
+            const data = JSON.parse(this.responseText);//Outputs the raw response text received from the server to the browser console.(string -> js object)
+            // console.log(data);
+            const htmlData =
+                `<div>
+                <div>
+                    <img src="${data[0].flags.png}">
+                    <h1>${data[0].name["common"]}</h1>
+                    <h1>${data[0].capital}</h1>
+                    <h2>${data[0].population}</h2>    
+                </div>
+            </div>`;
+            container.insertAdjacentHTML("afterbegin", htmlData)//insertAdjacentHTML() method allows inserting HTML content relative to the element's current contents
+            //"afterbegin" specifies that the content should be inserted immediately after the opening tag of the container.
+            //  if you had existing content inside the container that you wanted to preserve, insertAdjacentHTML("afterbegin",htmlData) would be more appropriate, as it appends the new content while retaining the existing content.
+            // container.innerHTML=htmlData; // replaces all existing content within the container with the new HTML content provided in "htmlData".
+            //Example
+            // beforebegin 
+            // <p>
+            // afterbegin
+            // beforeend
+            // </p>
+            // afterend
+        })
+    </script>
+</body>
+
+</html>

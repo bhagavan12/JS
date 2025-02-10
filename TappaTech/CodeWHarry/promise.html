@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="7_Pratice.js"></script>
+</head>
+<body>
+    <!-- <div id="idi"> -->
+        <button id="but">button</button>
+        <p id="pid"></p>
+    <!-- </div> -->
+    <!-- <script>
+        //state intially pending
+        //state changes to fullfilled when resolve called
+        //state changes to rejected when reject called
+        // result = value (resolve(value) or reject(new Error) both are callbacks provided by js engine)
+        let p1=new Promise((resolve,reject)=>{
+            // console.log("Promise1 is pending")
+            setTimeout(()=>{
+                // console.log("i am a promise and i am fulfilled")
+                // resolve(true);//if 1st line called then below reject will not called 
+                reject(new Error("error of p1"))
+            },5000)
+        })
+        console.log(p1)
+
+        let p2=new Promise((resolve,reject)=>{
+            // console.log("Promise2 is pending")
+            setTimeout(()=>{
+                // console.log("i am a promise and i am reject")
+                // reject(new Error("error p2"));
+                resolve(true);
+            },5000)
+        })
+        //consuming code can receive the final result by then or catch
+        // to get the value
+        p1.then((value)=>{ //resolve callled then .then is activated
+            console.log(value)
+            alert(value);
+        },(error)=>{ // if reject called thenn catch will activated
+            console.log(error);
+            alert(error)
+        })
+        //here if i use .then then 1st lambda function is used for resolve value ,2nd will used as a .catch function,
+        /*incorrecct for two lambda function in catch*/
+        //here if i use .catch then 1st lambda function is used for reject value ,2nd will used as a .then function,
+        //or we can use diff then and catch function separately
+        // p1.catch((error)=>{ // if reject called thenn catch will activated
+        //     console.log(error);
+        //     alert(error)
+        // },(value)=>{ //resolve callled then then is activated
+        //     console.log(value)
+        //     alert(value);
+        // })
+        
+        /*incorrecct for two lambda function in catch*/
+        //above and below are same 
+        //to catch the errors
+        
+        p2.catch((error)=>{//here only one catch or then is worked
+            console.log(error) // if catch is run then below .then is referred as chained inner promise of this catch then return undefined
+            alert(error)
+        }).then((val)=>{ // if direct resolve is called then direct this .then is referred above p2's then
+            alert(val);
+            console.log("from p2",val);
+        })
+        console.log(p2)
+
+        //using only .then
+        //to handle only resolve use .then(()=>{})
+        //to handle both then use .then((val)=>{},(error)=>{})
+        //to handle error then use .then(null,(err)=>{})
+    </script> -->
+</body>
+</html>

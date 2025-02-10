@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <div>
+            <div>
+
+                <p>qwertyuiop</p>
+                <p id="showMyName"></p>
+                <h1 id="h1id"></h1>
+                <br>
+                <button id="btn">start</button>
+                <button id="btn-stop">stop</button>
+            </div>
+        </div>
+        <script>
+            const showMyName=document.querySelector('#showMyName');
+            const btn=document.querySelector('#btn');
+            const btn_stop=document.getElementById('btn-stop');
+            let num=0;
+            let stopval;
+            btn.addEventListener('click',()=>{
+                setTimeout(()=>{ //one time called
+                    showMyName.innerHTML="teja";
+                },1000)
+                // clearTimeout(val,1000);
+                stopval=setInterval(()=>{// continously calling after that 1000 setted milliseconds
+                    document.getElementById('h1id').innerHTML=`${num}`;
+                    num++;
+                },1000)
+            });
+            btn_stop.addEventListener('click',()=>{
+                clearInterval(stopval);
+            })
+        </script>
+    </body>
+</html>
